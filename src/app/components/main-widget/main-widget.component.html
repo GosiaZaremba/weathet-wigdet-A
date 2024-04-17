@@ -1,1 +1,9 @@
-<p>{{ data }}</p>
+<p>data:</p>
+<p>
+  temp: {{ dataService.getCurrentWeatherData()?.temperature_2m
+  }}{{ dataService.getCurrentWeatherUnits()?.temperature_2m }}
+</p>
+<p>
+  humid: {{ dataService.getCurrentWeatherData()?.relative_humidity_2m }}
+  {{ dataService.getCurrentWeatherUnits()?.relative_humidity_2m }}
+</p>

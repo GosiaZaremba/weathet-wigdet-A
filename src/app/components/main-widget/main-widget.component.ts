@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CurrentWeatherService } from '../../services/current-weather.service';
 
 @Component({
@@ -10,13 +10,13 @@ import { CurrentWeatherService } from '../../services/current-weather.service';
 })
 export class MainWidgetComponent {
   data$: any;
+  dataService: any = inject(CurrentWeatherService);
+  latitude = '52.52';
+  longitude = '13.41';
 
-  constructor(private currentWeatherService: CurrentWeatherService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.data$ = this.currentWeatherService.getCurrentWeatherData();
-    this.data$.subscribe((data: any) => {
-      console.log(data);
-    });
+  ngOnInit() {
+    this.dataService.fetchData(this.latitude, this.longitude);
   }
 }
