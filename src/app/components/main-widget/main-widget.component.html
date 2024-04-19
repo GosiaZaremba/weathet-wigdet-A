@@ -1,19 +1,36 @@
-<p>data:</p>
-<p>
-  temp: {{ currentDataService.getCurrentWeatherData()?.temperature_2m
-  }}{{ currentDataService.getCurrentWeatherUnits()?.temperature_2m }}
-</p>
-<p>
-  humid: {{ currentDataService.getCurrentWeatherData()?.relative_humidity_2m }}
-  {{ currentDataService.getCurrentWeatherUnits()?.relative_humidity_2m }}
-</p>
+<div class="border">
+  <p>Current:</p>
+  <p>
+    temp: {{ currentDataService.getCurrentWeatherData()?.temperature_2m
+    }}{{ currentDataService.getCurrentWeatherUnits()?.temperature_2m }}
+  </p>
+  <p>
+    humid:
+    {{ currentDataService.getCurrentWeatherData()?.relative_humidity_2m }}
+    {{ currentDataService.getCurrentWeatherUnits()?.relative_humidity_2m }}
+  </p>
+</div>
 
-<p>Daily</p>
-@for(day of dailyDataService.getDailyWeatherData(); track
-dailyDataService.getDailyWeatherData().time){
-<p>{{ day.time }}</p>
-<p>
-  {{ day.temperature_2m_max
-  }}{{ dailyDataService.getDailyWeatherUnits()?.temperature_2m_max }}
-</p>
-}
+<div class="border">
+  <p>Daily</p>
+  @for(day of dailyDataService.getDailyWeatherData(); track
+  dailyDataService.getDailyWeatherData()){
+  <p>{{ day.time }}</p>
+  <p>
+    {{ day.temperature_2m_max
+    }}{{ dailyDataService.getDailyWeatherUnits()?.temperature_2m_max }}
+  </p>
+  }
+</div>
+
+<div class="border">
+  <p>Daily</p>
+  @for(hour of hourlyDataService.getHourlyWeatherData(); track
+  hourlyDataService.getHourlyWeatherData()){
+  <p>{{ hour.time }}</p>
+  <p>
+    {{ hour.temperature_2m
+    }}{{ hourlyDataService.getHourlyWeatherUnits()?.temperature_2m }}
+  </p>
+  }
+</div>
