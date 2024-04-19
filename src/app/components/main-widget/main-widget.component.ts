@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { CurrentWeatherService } from '../../services/current-weather.service';
+import { DailyWeatherService } from '../../services/daily-weather.service';
 
 @Component({
   selector: 'app-main-widget',
@@ -9,14 +10,19 @@ import { CurrentWeatherService } from '../../services/current-weather.service';
   styleUrl: './main-widget.component.scss',
 })
 export class MainWidgetComponent {
-  data$: any;
-  dataService: any = inject(CurrentWeatherService);
-  latitude = '52.52';
-  longitude = '13.41';
+  currentDataService: any = inject(CurrentWeatherService);
+  dailyDataService: any = inject(DailyWeatherService);
 
-  constructor() {}
+  latitude = '54.21';
+  longitude = '18.38';
+  days = 3;
+
+  constructor() {
+    effect(() => console.log(this.dailyDataService.getDailyWeatherData()));
+  }
 
   ngOnInit() {
-    this.dataService.fetchData(this.latitude, this.longitude);
+    this.currentDataService.fetchData(this.latitude, this.longitude);
+    this.dailyDataService.fetchData(this.latitude, this.longitude, this.days);
   }
 }

@@ -1,9 +1,19 @@
 <p>data:</p>
 <p>
-  temp: {{ dataService.getCurrentWeatherData()?.temperature_2m
-  }}{{ dataService.getCurrentWeatherUnits()?.temperature_2m }}
+  temp: {{ currentDataService.getCurrentWeatherData()?.temperature_2m
+  }}{{ currentDataService.getCurrentWeatherUnits()?.temperature_2m }}
 </p>
 <p>
-  humid: {{ dataService.getCurrentWeatherData()?.relative_humidity_2m }}
-  {{ dataService.getCurrentWeatherUnits()?.relative_humidity_2m }}
+  humid: {{ currentDataService.getCurrentWeatherData()?.relative_humidity_2m }}
+  {{ currentDataService.getCurrentWeatherUnits()?.relative_humidity_2m }}
 </p>
+
+<p>Daily</p>
+@for(day of dailyDataService.getDailyWeatherData(); track
+dailyDataService.getDailyWeatherData().time){
+<p>{{ day.time }}</p>
+<p>
+  {{ day.temperature_2m_max
+  }}{{ dailyDataService.getDailyWeatherUnits()?.temperature_2m_max }}
+</p>
+}

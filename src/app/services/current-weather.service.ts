@@ -2,16 +2,17 @@ import { Injectable, signal } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subscription, map } from 'rxjs';
 import {
+  CurrentDataResponse,
   CurrentUnits,
   CurrentWeatherData,
-} from '../models/currentWeatherData.model';
+} from '../models/current-weather-data.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CurrentWeatherService {
   private currentData$ = new BehaviorSubject<unknown>(null);
-  private currentData = signal<any>(null);
+  private currentData = signal<CurrentDataResponse | null>(null);
   private currentWeatherData = signal<CurrentWeatherData | null>(null);
   private currentWeatherUnits = signal<CurrentUnits | null>(null);
 
@@ -40,7 +41,8 @@ export class CurrentWeatherService {
           'wind_direction_10m',
           'wind_gusts_10m',
         ].join(',')
-      );
+      )
+      .set('timezone', 'auto');
     return this.http
       .get<any>(this.apiUrl, { params: params })
       .pipe(map((response) => this.processData(response)))
