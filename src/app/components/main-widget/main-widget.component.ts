@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { CurrentWeatherService } from '../../services/current-weather.service';
 import { DailyWeatherService } from '../../services/daily-weather.service';
 import { HourlyWeatherService } from '../../services/hourly-weather.service';
+import { CurrentWeatherViewComponent } from '../current-weather-view/current-weather-view.component';
 
 @Component({
   selector: 'app-main-widget',
   standalone: true,
-  imports: [],
+  imports: [CurrentWeatherViewComponent],
   templateUrl: './main-widget.component.html',
   styleUrl: './main-widget.component.scss',
 })

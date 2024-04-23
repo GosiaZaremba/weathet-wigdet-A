@@ -1,0 +1,108 @@
+<div>
+  <img
+    [src]="
+      '../../../assets/img/weather/' +
+      getWeatherIcon(
+        this.currentDataService.getCurrentWeatherData()?.weather_code!,
+        this.currentDataService.getCurrentWeatherData()?.is_day!
+      )
+    "
+    alt="weather icon"
+  />
+</div>
+<div>
+  <p>
+    date:
+    <span>{{
+      this.currentDataService.getCurrentWeatherData()?.time
+        | date : "EEEE, MMMM d, y"
+    }}</span>
+  </p>
+  <p>
+    temperature:
+    <span>{{
+      this.currentDataService.getCurrentWeatherData()?.temperature_2m
+    }}</span
+    ><span>{{
+      this.currentDataService.getCurrentWeatherUnits()?.temperature_2m
+    }}</span>
+  </p>
+  <p>
+    apparent temperature:
+    <span>{{
+      this.currentDataService.getCurrentWeatherData()?.apparent_temperature
+    }}</span
+    ><span>{{
+      this.currentDataService.getCurrentWeatherUnits()?.apparent_temperature
+    }}</span>
+  </p>
+  <p>
+    relative humidity:
+    <span>{{
+      this.currentDataService.getCurrentWeatherData()?.relative_humidity_2m
+    }}</span
+    ><span>{{
+      this.currentDataService.getCurrentWeatherUnits()?.relative_humidity_2m
+    }}</span>
+  </p>
+  <p>
+    precipitation:
+    <span>{{
+      this.currentDataService.getCurrentWeatherData()?.precipitation
+    }}</span
+    ><span>{{
+      this.currentDataService.getCurrentWeatherUnits()?.precipitation
+    }}</span>
+  </p>
+  <p>
+    cloud cover:
+    <span>{{
+      this.currentDataService.getCurrentWeatherData()?.cloud_cover
+    }}</span
+    ><span>{{
+      this.currentDataService.getCurrentWeatherUnits()?.cloud_cover
+    }}</span>
+  </p>
+  <p>
+    surface pressure:
+    <span>{{
+      this.currentDataService.getCurrentWeatherData()?.surface_pressure
+    }}</span
+    ><span>{{
+      this.currentDataService.getCurrentWeatherUnits()?.surface_pressure
+    }}</span>
+  </p>
+  <p>
+    wind speed:
+    <span>{{
+      this.currentDataService.getCurrentWeatherData()?.wind_speed_10m
+    }}</span
+    ><span>{{
+      this.currentDataService.getCurrentWeatherUnits()?.wind_speed_10m
+    }}</span>
+  </p>
+  <p>
+    wind gusts:
+    <span>{{
+      this.currentDataService.getCurrentWeatherData()?.wind_gusts_10m
+    }}</span
+    ><span>{{
+      this.currentDataService.getCurrentWeatherUnits()?.wind_gusts_10m
+    }}</span>
+  </p>
+  <p>
+    wind direction:
+    <span>{{
+      this.currentDataService.getCurrentWeatherData()?.wind_direction_10m
+    }}</span
+    ><span>{{
+      this.currentDataService.getCurrentWeatherUnits()?.wind_direction_10m
+    }}</span>
+  </p>
+  <p>
+    weather code:
+    <span>{{
+      this.currentDataService.getCurrentWeatherData()?.weather_code
+    }}</span>
+  </p>
+</div>
