@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { BehaviorSubject, Subscription, map } from 'rxjs';
+import { Subscription, map } from 'rxjs';
 import {
   DailyWeatherData,
   DailyWeatherDataResponse,
@@ -12,7 +12,6 @@ import {
   providedIn: 'root',
 })
 export class DailyWeatherService {
-  private dailyData$ = new BehaviorSubject<unknown>(null);
   private dailyData = signal<DailyWeatherResponse | null>(null);
   private dailyWeatherData = signal<DailyWeatherData[] | null>(null);
   private dailyWeatherUnits = signal<DailyWeatherUnits | null>(null);
@@ -46,9 +45,7 @@ export class DailyWeatherService {
     return this.http
       .get<any>(this.apiUrl, { params: params })
       .pipe(map((response) => this.processData(response)))
-      .subscribe((data) => {
-        this.dailyData$.next(data);
-      });
+      .subscribe();
   }
 
   private processData(data: DailyWeatherResponse): void {
