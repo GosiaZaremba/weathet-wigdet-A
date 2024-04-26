@@ -13,4 +13,5 @@ export class WeatherParamsIconsComponent {
   @Input() paramUnit!: string;
   @Input() additionalVal!: string | number | null;
   @Input() additionalUnit!: string;
+  @Input() iconValue!: string | number | null;
 }

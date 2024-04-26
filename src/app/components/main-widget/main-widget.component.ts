@@ -19,9 +19,12 @@ export class MainWidgetComponent {
   hourlyDataService = inject(HourlyWeatherService);
   randomQuoteService = inject(RandomQuoteService);
 
-  latitude = '54.21';
-  longitude = '18.38';
-  days = '3';
+  latitude = '54.3523';
+  longitude = '18.6491';
+  days = '7';
+
+  // latitude = '-33.8678';
+  // longitude = '151.2073';
 
   ngOnInit() {
     this.onInit();

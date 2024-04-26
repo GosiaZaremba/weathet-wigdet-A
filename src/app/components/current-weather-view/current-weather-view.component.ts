@@ -5,6 +5,7 @@ import { getWeatherIcon } from '../../helpers/weather-code';
 import { QuoteComponent } from './quote/quote.component';
 import { WeatherParamComponent } from './weather-param/weather-param.component';
 import { WindDirectionParamComponent } from './wind-direction-param/wind-direction-param.component';
+import { WeatherImgComponent } from '../shared/weather-img/weather-img.component';
 
 @Component({
   selector: 'app-current-weather-view',
@@ -14,14 +15,13 @@ import { WindDirectionParamComponent } from './wind-direction-param/wind-directi
     QuoteComponent,
     WeatherParamComponent,
     WindDirectionParamComponent,
+    WeatherImgComponent,
   ],
   templateUrl: './current-weather-view.component.html',
   styleUrl: './current-weather-view.component.scss',
 })
 export class CurrentWeatherViewComponent {
   currentDataService = inject(CurrentWeatherService);
-
-  icon!: string | null;
   getWeatherIcon = getWeatherIcon;
 
   latitude = '54.21';

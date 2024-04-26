@@ -1,5 +1,12 @@
-@for(day of this.dailyWeatherService.getDailyWeatherData(); track $index )
+@for(day of this.dailyWeatherService.getDailyWeatherData()!; track $index )
 {<app-day-weather-view
   [dayData]="day"
   [dayUnits]="this.dailyWeatherService.getDailyWeatherUnits()!"
+  [showDetails]="this.showDetails()"
 />}
+<i
+  [ngClass]="
+    this.showDetails() ? 'bi bi-three-dots-vertical' : 'bi bi-three-dots'
+  "
+  (click)="setShowDetails()"
+></i>
