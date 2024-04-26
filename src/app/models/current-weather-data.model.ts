@@ -12,6 +12,8 @@ export interface CurrentWeatherData {
   wind_speed_10m: number;
   wind_direction_10m: number;
   wind_gusts_10m: number;
+  time: string;
+  interval: number;
 }
 
 export interface CurrentUnits {
