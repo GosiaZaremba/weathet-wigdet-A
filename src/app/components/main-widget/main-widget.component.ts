@@ -4,11 +4,12 @@ import { DailyWeatherService } from '../../services/daily-weather.service';
 import { HourlyWeatherService } from '../../services/hourly-weather.service';
 import { CurrentWeatherViewComponent } from '../current-weather-view/current-weather-view.component';
 import { RandomQuoteService } from '../../services/random-quote.service';
+import { DailyWeatherViewComponent } from '../daily-weather-view/daily-weather-view.component';
 
 @Component({
   selector: 'app-main-widget',
   standalone: true,
-  imports: [CurrentWeatherViewComponent],
+  imports: [CurrentWeatherViewComponent, DailyWeatherViewComponent],
   templateUrl: './main-widget.component.html',
   styleUrl: './main-widget.component.scss',
 })

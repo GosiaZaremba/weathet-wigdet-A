@@ -1,0 +1,5 @@
+@for(day of this.dailyWeatherService.getDailyWeatherData(); track $index )
+{<app-day-weather-view
+  [dayData]="day"
+  [dayUnits]="this.dailyWeatherService.getDailyWeatherUnits()!"
+/>}
