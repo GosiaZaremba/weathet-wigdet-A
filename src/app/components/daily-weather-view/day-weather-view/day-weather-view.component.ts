@@ -13,33 +13,28 @@ import {
   style,
   animate,
   transition,
+  sequence,
 } from '@angular/animations';
 
 @Component({
   selector: 'app-day-weather-view',
   standalone: true,
+  imports: [WeatherParamsIconsComponent, CommonModule, WeatherImgComponent],
+  templateUrl: './day-weather-view.component.html',
+  styleUrl: './day-weather-view.component.scss',
   animations: [
     trigger('openClose', [
-      state(
-        'open',
-        style({
-          height: '300px',
-        })
-      ),
+      state('open', style({ height: '*' })),
       state(
         'closed',
         style({
           height: '100px',
-          overflow: 'hidden',
         })
       ),
-      transition('open => closed', [animate('0.5s')]),
-      transition('closed => open', [animate('0.5s')]),
+      transition('open => closed', [animate('0.5s ease-in-out')]),
+      transition('closed => open', [animate('0.5s ease-in-out')]),
     ]),
   ],
-  imports: [WeatherParamsIconsComponent, CommonModule, WeatherImgComponent],
-  templateUrl: './day-weather-view.component.html',
-  styleUrl: './day-weather-view.component.scss',
 })
 export class DayWeatherViewComponent {
   @Input() dayData!: DailyWeatherData;

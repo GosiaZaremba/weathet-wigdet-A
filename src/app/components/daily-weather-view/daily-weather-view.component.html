@@ -1,4 +1,4 @@
-<div class="d-flex">
+<div class="d-flex border py-3">
   @for(day of this.dailyWeatherService.getDailyWeatherData()!; track $index )
   {<app-day-weather-view
     [dayData]="day"

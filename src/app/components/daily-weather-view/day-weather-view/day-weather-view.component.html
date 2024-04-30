@@ -1,5 +1,8 @@
-<div [className]="'d-flex flex-column '">
-  <div [className]="''" [@openClose]="showDetails ? 'open' : 'closed'">
+<div
+  [@openClose]="showDetails ? 'open' : 'closed'"
+  class="border border-primary open-close"
+>
+  <div [className]="'d-flex flex-column'">
     <div>
       <div>
         <p>{{ dayData.time | date : "MMMM d" }}</p>
@@ -30,12 +33,10 @@
         [icon]="'bi-sunset'"
         [paramVal]="dayData.sunset | date : 'H:mm'"
       />
-
       <app-weather-params-icons
         [icon]="'bi-emoji-sunglasses'"
         [paramVal]="dayData.uv_index_max"
       />
-
       <app-weather-params-icons
         [icon]="'bi-cloud-rain'"
         [paramVal]="dayData.precipitation_sum"
@@ -43,7 +44,6 @@
         [additionalVal]="dayData.precipitation_probability_max"
         [additionalUnit]="dayUnits.precipitation_probability_max"
       />
-
       <app-weather-params-icons
         [icon]="'bi-wind'"
         [paramVal]="dayData.wind_speed_10m_max"
