@@ -1,12 +1,13 @@
-@for(day of this.dailyWeatherService.getDailyWeatherData()!; track $index )
-{<app-day-weather-view
-  [dayData]="day"
-  [dayUnits]="this.dailyWeatherService.getDailyWeatherUnits()!"
-  [showDetails]="this.showDetails()"
-/>}
-<i
-  [ngClass]="
-    this.showDetails() ? 'bi bi-three-dots-vertical' : 'bi bi-three-dots'
-  "
-  (click)="setShowDetails()"
-></i>
+<div class="d-flex">
+  @for(day of this.dailyWeatherService.getDailyWeatherData()!; track $index )
+  {<app-day-weather-view
+    [dayData]="day"
+    [dayUnits]="this.dailyWeatherService.getDailyWeatherUnits()!"
+    [showDetails]="this.showDetails()"
+  />}
+  <i
+    class="bi bi-arrow-down-short"
+    [ngClass]="this.showDetails() ? 'down' : ''"
+    (click)="setShowDetails()"
+  ></i>
+</div>

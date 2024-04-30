@@ -1,55 +1,55 @@
-<div [className]="'d-flex flex-column'">
-  <div>
+<div [className]="'d-flex flex-column '">
+  <div [className]="''" [@openClose]="showDetails ? 'open' : 'closed'">
     <div>
-      <p>{{ dayData.time | date : "MMMM d" }}</p>
-      <p>{{ dayData.time | date : "EEEE" }}</p>
+      <div>
+        <p>{{ dayData.time | date : "MMMM d" }}</p>
+        <p>{{ dayData.time | date : "EEEE" }}</p>
+      </div>
+      <div class="w-50">
+        <app-weather-img
+          [weatherIcon]="getWeatherIcon(this.dayData.weather_code!, 1)"
+        />
+      </div>
     </div>
-    <div class="w-50">
-      <app-weather-img
-        [weatherIcon]="getWeatherIcon(this.dayData.weather_code!, 1)"
+    <div>
+      <app-weather-params-icons
+        [icon]="'bi-thermometer-low'"
+        [paramVal]="dayData.temperature_2m_min"
+        [paramUnit]="dayUnits.temperature_2m_min"
+      />
+      <app-weather-params-icons
+        [icon]="'bi-thermometer-high'"
+        [paramVal]="dayData.temperature_2m_max"
+        [paramUnit]="dayUnits.temperature_2m_max"
+      />
+      <app-weather-params-icons
+        [icon]="'bi-sunrise'"
+        [paramVal]="dayData.sunrise | date : 'H:mm'"
+      />
+      <app-weather-params-icons
+        [icon]="'bi-sunset'"
+        [paramVal]="dayData.sunset | date : 'H:mm'"
+      />
+
+      <app-weather-params-icons
+        [icon]="'bi-emoji-sunglasses'"
+        [paramVal]="dayData.uv_index_max"
+      />
+
+      <app-weather-params-icons
+        [icon]="'bi-cloud-rain'"
+        [paramVal]="dayData.precipitation_sum"
+        [paramUnit]="dayUnits.precipitation_sum"
+        [additionalVal]="dayData.precipitation_probability_max"
+        [additionalUnit]="dayUnits.precipitation_probability_max"
+      />
+
+      <app-weather-params-icons
+        [icon]="'bi-wind'"
+        [paramVal]="dayData.wind_speed_10m_max"
+        [paramUnit]="dayUnits.wind_speed_10m_max"
+        [iconValue]="dayData.wind_direction_10m_dominant"
       />
     </div>
   </div>
-  @if(showDetails) {
-  <div>
-    <app-weather-params-icons
-      [icon]="'bi-thermometer-low'"
-      [paramVal]="dayData.temperature_2m_min"
-      [paramUnit]="dayUnits.temperature_2m_min"
-    />
-    <app-weather-params-icons
-      [icon]="'bi-thermometer-high'"
-      [paramVal]="dayData.temperature_2m_max"
-      [paramUnit]="dayUnits.temperature_2m_max"
-    />
-    <app-weather-params-icons
-      [icon]="'bi-sunrise'"
-      [paramVal]="dayData.sunrise | date : 'H:mm'"
-    />
-    <app-weather-params-icons
-      [icon]="'bi-sunset'"
-      [paramVal]="dayData.sunset | date : 'H:mm'"
-    />
-
-    <app-weather-params-icons
-      [icon]="'bi-emoji-sunglasses'"
-      [paramVal]="dayData.uv_index_max"
-    />
-
-    <app-weather-params-icons
-      [icon]="'bi-cloud-rain'"
-      [paramVal]="dayData.precipitation_sum"
-      [paramUnit]="dayUnits.precipitation_sum"
-      [additionalVal]="dayData.precipitation_probability_max"
-      [additionalUnit]="dayUnits.precipitation_probability_max"
-    />
-
-    <app-weather-params-icons
-      [icon]="'bi-wind'"
-      [paramVal]="dayData.wind_speed_10m_max"
-      [paramUnit]="dayUnits.wind_speed_10m_max"
-      [iconValue]="dayData.wind_direction_10m_dominant"
-    />
-  </div>
-  }
 </div>

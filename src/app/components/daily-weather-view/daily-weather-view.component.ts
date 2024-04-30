@@ -6,10 +6,10 @@ import { DailyWeatherService } from '../../services/daily-weather.service';
 @Component({
   selector: 'app-daily-weather-view',
   standalone: true,
+
   imports: [DayWeatherViewComponent, CommonModule],
   templateUrl: './daily-weather-view.component.html',
   styleUrl: './daily-weather-view.component.scss',
-  host: { class: 'd-flex' },
 })
 export class DailyWeatherViewComponent {
   dailyWeatherService = inject(DailyWeatherService);
