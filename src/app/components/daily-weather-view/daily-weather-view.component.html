@@ -1,0 +1,13 @@
+<div class="d-flex border py-3">
+  @for(day of this.dailyWeatherService.getDailyWeatherData()!; track $index )
+  {<app-day-weather-view
+    [dayData]="day"
+    [dayUnits]="this.dailyWeatherService.getDailyWeatherUnits()!"
+    [showDetails]="this.showDetails()"
+  />}
+  <i
+    class="bi bi-arrow-down-short"
+    [ngClass]="this.showDetails() ? 'down' : ''"
+    (click)="setShowDetails()"
+  ></i>
+</div>

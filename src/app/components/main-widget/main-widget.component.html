@@ -1,10 +1,12 @@
+@if(this.randomQuoteService.getRandomQuote() &&
+this.currentDataService.getCurrentWeatherData()) {
 <div class="mx-auto mt-3 main-widget-container">
-  @if(this.randomQuoteService.getRandomQuote() &&
-  this.currentDataService.getCurrentWeatherData()) {
   <div class="current-widget-container">
-    <app-current-weather-view></app-current-weather-view>
+    <app-current-weather-view />
   </div>
-  }
 
-  <div class="daily-widget-container"></div>
+  <div class="daily-widget-container">
+    <app-daily-weather-view />
+  </div>
 </div>
+}

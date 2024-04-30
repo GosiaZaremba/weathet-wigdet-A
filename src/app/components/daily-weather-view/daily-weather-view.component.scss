@@ -1,0 +1,7 @@
+i.bi-arrow-down-short::before {
+  transition: all 500ms linear;
+}
+
+i.bi-arrow-down-short.down::before {
+  transform: rotate(180deg);
+}

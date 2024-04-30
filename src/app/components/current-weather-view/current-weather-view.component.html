@@ -8,18 +8,14 @@
     </p>
     <app-quote />
   </div>
-  <div>
-    <img
-      [src]="
-        '../../../assets/img/weather/' +
-        getWeatherIcon(
-          this.currentDataService.getCurrentWeatherData()?.weather_code!,
-          this.currentDataService.getCurrentWeatherData()?.is_day!
-        )
-      "
-      alt="weather icon"
-    />
-  </div>
+  <app-weather-img
+    [weatherIcon]="
+      getWeatherIcon(
+        this.currentDataService.getCurrentWeatherData()?.weather_code!,
+        this.currentDataService.getCurrentWeatherData()?.is_day!
+      )
+    "
+  />
 </div>
 <div class="row">
   <div class="col">
