@@ -1,0 +1,45 @@
+<div>
+  <div #hoursContainer class="d-flex w-full hours-container position-relative">
+    <button class="position-sticky btn-left" (click)="this.onClickLeft()">
+      Left
+    </button>
+    @for(hour of this.hourlyWeatherService.getHourlyWeatherData()?.[dayIndex];
+    track $index) {
+    <div class="border day">
+      <p>{{ hour.time | date : "H:mm" }}</p>
+      <app-weather-img [weatherCode]="hour.weather_code" />
+      <app-weather-params-icons
+        [icon]="'bi-thermometer-half'"
+        [paramVal]="hour.temperature_2m"
+        [paramUnit]="
+          this.hourlyWeatherService.getHourlyWeatherUnits()?.temperature_2m!
+        "
+      />
+      <app-weather-params-icons
+        [icon]="'bi-cloud-rain'"
+        [paramVal]="hour.precipitation"
+        [paramUnit]="
+          this.hourlyWeatherService.getHourlyWeatherUnits()?.precipitation!
+        "
+        [additionalVal]="hour.precipitation_probability"
+        [additionalUnit]="
+          this.hourlyWeatherService.getHourlyWeatherUnits()
+            ?.precipitation_probability!
+        "
+      />
+      <app-weather-params-icons
+        [icon]="'bi-wind'"
+        [paramVal]="hour.wind_speed_10m"
+        [paramUnit]="
+          hourlyWeatherService.getHourlyWeatherUnits()?.wind_speed_10m!
+        "
+        [iconValue]="hour.wind_direction_10m"
+      />
+    </div>
+    }
+
+    <button class="position-sticky btn-right" (click)="this.onClickRight()">
+      Right
+    </button>
+  </div>
+</div>

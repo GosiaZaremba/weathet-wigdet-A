@@ -4,9 +4,8 @@ import {
   DailyWeatherData,
   DailyWeatherUnits,
 } from '../../../models/daily-weather-data.model';
-import { WeatherParamsIconsComponent } from './weather-params-icons/weather-params-icons.component';
+import { WeatherParamsIconsComponent } from '../../shared/weather-params-icons/weather-params-icons.component';
 import { WeatherImgComponent } from '../../shared/weather-img/weather-img.component';
-import { getWeatherIcon } from '../../../helpers/weather-code';
 import {
   trigger,
   state,
@@ -40,5 +39,4 @@ export class DayWeatherViewComponent {
   @Input() dayData!: DailyWeatherData;
   @Input() dayUnits!: DailyWeatherUnits;
   @Input() showDetails!: boolean;
-  getWeatherIcon = getWeatherIcon;
 }

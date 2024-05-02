@@ -9,12 +9,10 @@
     <app-quote />
   </div>
   <app-weather-img
-    [weatherIcon]="
-      getWeatherIcon(
-        this.currentDataService.getCurrentWeatherData()?.weather_code!,
-        this.currentDataService.getCurrentWeatherData()?.is_day!
-      )
+    [weatherCode]="
+      this.currentDataService.getCurrentWeatherData()?.weather_code!
     "
+    [isDay]="this.currentDataService.getCurrentWeatherData()?.is_day!"
   />
 </div>
 <div class="row">

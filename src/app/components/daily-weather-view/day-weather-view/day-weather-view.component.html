@@ -9,9 +9,7 @@
         <p>{{ dayData.time | date : "EEEE" }}</p>
       </div>
       <div class="w-50">
-        <app-weather-img
-          [weatherIcon]="getWeatherIcon(this.dayData.weather_code!, 1)"
-        />
+        <app-weather-img [weatherCode]="dayData.weather_code" />
       </div>
     </div>
     <div>
