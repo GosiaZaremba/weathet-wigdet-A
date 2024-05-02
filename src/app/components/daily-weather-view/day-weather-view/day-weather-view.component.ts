@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   DailyWeatherData,
@@ -39,4 +39,15 @@ export class DayWeatherViewComponent {
   @Input() dayData!: DailyWeatherData;
   @Input() dayUnits!: DailyWeatherUnits;
   @Input() showDetails!: boolean;
+  @Input() index!: number;
+  dayIndex = signal<number>(0);
+
+  //TODO send signal to daily-weather-view, then to main-widget, then to hourly.
+  // Also, to keep the structure it would be a good idea to do a separate component for hours and then iterate over them.
+  // Maybe create a service for dayIndex and view?
+
+  onClickWeatherIcon(index: number) {
+    this.dayIndex.set(index);
+    console.log(this.dayIndex());
+  }
 }

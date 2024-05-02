@@ -4,6 +4,7 @@ import {
   ElementRef,
   ViewChild,
   effect,
+  Input,
 } from '@angular/core';
 import { HourlyWeatherService } from '../../services/hourly-weather.service';
 import { CommonModule } from '@angular/common';
@@ -19,7 +20,7 @@ import { WeatherImgComponent } from '../shared/weather-img/weather-img.component
 })
 export class HourlyWeatherViewComponent {
   hourlyWeatherService = inject(HourlyWeatherService);
-  dayIndex: number = 0;
+  @Input() dayIndex!: number;
   @ViewChild('hoursContainer') hoursContainer!: ElementRef;
 
   constructor() {

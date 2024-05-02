@@ -35,6 +35,8 @@ export class HourlyWeatherService {
           'weather_code',
           'wind_speed_10m',
           'wind_direction_10m',
+          'uv_index',
+          'is_day',
         ].join(',')
       )
       .set('timezone', 'auto')
@@ -77,6 +79,8 @@ export class HourlyWeatherService {
         weather_code: hourly.weather_code[index],
         wind_speed_10m: hourly.wind_speed_10m[index],
         wind_direction_10m: hourly.wind_direction_10m[index],
+        uv_index: hourly.uv_index[index],
+        is_day: hourly.is_day[index],
       });
     });
     return Object.values(sortedData);

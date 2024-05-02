@@ -9,7 +9,10 @@
         <p>{{ dayData.time | date : "EEEE" }}</p>
       </div>
       <div class="w-50">
-        <app-weather-img [weatherCode]="dayData.weather_code" />
+        <app-weather-img
+          [weatherCode]="dayData.weather_code"
+          (click)="onClickWeatherIcon(this.index)"
+        />
       </div>
     </div>
     <div>

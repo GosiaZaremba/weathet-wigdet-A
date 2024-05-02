@@ -7,13 +7,20 @@
     track $index) {
     <div class="border day">
       <p>{{ hour.time | date : "H:mm" }}</p>
-      <app-weather-img [weatherCode]="hour.weather_code" />
+      <app-weather-img
+        [weatherCode]="hour.weather_code"
+        [isDay]="hour.is_day"
+      />
       <app-weather-params-icons
         [icon]="'bi-thermometer-half'"
         [paramVal]="hour.temperature_2m"
         [paramUnit]="
           this.hourlyWeatherService.getHourlyWeatherUnits()?.temperature_2m!
         "
+      />
+      <app-weather-params-icons
+        [icon]="'bi-emoji-sunglasses'"
+        [paramVal]="hour.uv_index"
       />
       <app-weather-params-icons
         [icon]="'bi-cloud-rain'"

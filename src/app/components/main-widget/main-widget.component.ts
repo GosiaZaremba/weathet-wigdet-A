@@ -24,10 +24,13 @@ export class MainWidgetComponent {
   hourlyDataService = inject(HourlyWeatherService);
   randomQuoteService = inject(RandomQuoteService);
 
+  hourlyView: boolean = false;
+
   latitude = '54.3523';
   longitude = '18.6491';
   days = '7';
 
+  // Sydney, Australia
   // latitude = '-33.8678';
   // longitude = '151.2073';
 
