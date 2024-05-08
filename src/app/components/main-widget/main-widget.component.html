@@ -4,9 +4,9 @@ this.currentDataService.getCurrentWeatherData()) {
   <div class="current-widget-container">
     <app-current-weather-view />
   </div>
-  @if(this.hourlyView) {
+  @if(this.hourViewService.hourlyViewData().hourlyView) {
   <div>
-    <app-hourly-weather-view [dayIndex]="1" />
+    <app-hourly-weather-view />
   </div>
   } @else {
   <div class="daily-widget-container">

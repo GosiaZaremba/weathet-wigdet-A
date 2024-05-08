@@ -1,4 +1,10 @@
-import { Component, inject, signal } from '@angular/core';
+import {
+  Component,
+  Input,
+  WritableSignal,
+  inject,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DayWeatherViewComponent } from './day-weather-view/day-weather-view.component';
 import { DailyWeatherService } from '../../services/daily-weather.service';
@@ -13,6 +19,7 @@ import { DailyWeatherService } from '../../services/daily-weather.service';
 })
 export class DailyWeatherViewComponent {
   dailyWeatherService = inject(DailyWeatherService);
+  @Input() hourlyView!: WritableSignal<boolean>;
   showDetails = signal<boolean>(false);
 
   setShowDetails() {
