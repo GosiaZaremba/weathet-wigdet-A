@@ -7,6 +7,8 @@ export interface HourlyWeatherUnits {
   weather_code: string;
   wind_speed_10m: string;
   wind_direction_10m: string;
+  is_day: string;
+  uv_index: string;
 }
 
 export interface HourlyWeatherDataResponse {
@@ -18,6 +20,8 @@ export interface HourlyWeatherDataResponse {
   weather_code: number[];
   wind_speed_10m: number[];
   wind_direction_10m: number[];
+  is_day: number[];
+  uv_index: number[];
 }
 
 export interface HourlyWeatherData {
@@ -29,6 +33,8 @@ export interface HourlyWeatherData {
   weather_code: number;
   wind_speed_10m: number;
   wind_direction_10m: number;
+  is_day: number;
+  uv_index: number;
 }
 
 export interface HourlyWeatherResponse {

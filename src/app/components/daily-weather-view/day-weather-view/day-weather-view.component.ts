@@ -1,20 +1,19 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   DailyWeatherData,
   DailyWeatherUnits,
 } from '../../../models/daily-weather-data.model';
-import { WeatherParamsIconsComponent } from './weather-params-icons/weather-params-icons.component';
+import { WeatherParamsIconsComponent } from '../../shared/weather-params-icons/weather-params-icons.component';
 import { WeatherImgComponent } from '../../shared/weather-img/weather-img.component';
-import { getWeatherIcon } from '../../../helpers/weather-code';
 import {
   trigger,
   state,
   style,
   animate,
   transition,
-  sequence,
 } from '@angular/animations';
+import { HourViewService } from '../../../services/hour-view.service';
 
 @Component({
   selector: 'app-day-weather-view',
@@ -37,8 +36,16 @@ import {
   ],
 })
 export class DayWeatherViewComponent {
+  hourViewService = inject(HourViewService);
   @Input() dayData!: DailyWeatherData;
   @Input() dayUnits!: DailyWeatherUnits;
   @Input() showDetails!: boolean;
-  getWeatherIcon = getWeatherIcon;
+  @Input() index!: number;
+
+  onClickWeatherIcon(index: number) {
+    this.hourViewService.setDayIndex(index);
+    this.hourViewService.setHourlyView(true);
+
+    console.log(this.hourViewService.hourlyViewData());
+  }
 }

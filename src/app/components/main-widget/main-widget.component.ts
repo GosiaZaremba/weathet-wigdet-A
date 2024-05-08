@@ -1,15 +1,21 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CurrentWeatherService } from '../../services/current-weather.service';
 import { DailyWeatherService } from '../../services/daily-weather.service';
 import { HourlyWeatherService } from '../../services/hourly-weather.service';
 import { CurrentWeatherViewComponent } from '../current-weather-view/current-weather-view.component';
 import { RandomQuoteService } from '../../services/random-quote.service';
 import { DailyWeatherViewComponent } from '../daily-weather-view/daily-weather-view.component';
+import { HourlyWeatherViewComponent } from '../hourly-weather-view/hourly-weather-view.component';
+import { HourViewService } from '../../services/hour-view.service';
 
 @Component({
   selector: 'app-main-widget',
   standalone: true,
-  imports: [CurrentWeatherViewComponent, DailyWeatherViewComponent],
+  imports: [
+    CurrentWeatherViewComponent,
+    DailyWeatherViewComponent,
+    HourlyWeatherViewComponent,
+  ],
   templateUrl: './main-widget.component.html',
   styleUrl: './main-widget.component.scss',
 })
@@ -18,11 +24,14 @@ export class MainWidgetComponent {
   dailyDataService = inject(DailyWeatherService);
   hourlyDataService = inject(HourlyWeatherService);
   randomQuoteService = inject(RandomQuoteService);
+  hourViewService = inject(HourViewService);
 
+  // Gdansk, Poland
   latitude = '54.3523';
   longitude = '18.6491';
   days = '7';
 
+  // Sydney, Australia
   // latitude = '-33.8678';
   // longitude = '151.2073';
 

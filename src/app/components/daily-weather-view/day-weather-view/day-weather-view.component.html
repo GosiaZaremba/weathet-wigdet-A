@@ -10,7 +10,8 @@
       </div>
       <div class="w-50">
         <app-weather-img
-          [weatherIcon]="getWeatherIcon(this.dayData.weather_code!, 1)"
+          [weatherCode]="dayData.weather_code"
+          (click)="onClickWeatherIcon(this.index)"
         />
       </div>
     </div>
