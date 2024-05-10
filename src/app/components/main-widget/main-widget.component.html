@@ -4,15 +4,28 @@ this.currentDataService.getCurrentWeatherData()) {
   <div class="current-widget-container">
     <app-current-weather-view />
   </div>
-  @if(this.hourViewService.hourlyViewData().hourlyView) {
-  <div>
-    <app-hourly-weather-view />
+  <div
+    [@transition]="
+      this.hourViewService.hourlyViewData().hourlyView ? 'end' : 'start'
+    "
+  >
+    @if(this.hourViewService.hourlyViewData().hourlyView) {
+    <div>
+      <app-hourly-weather-view />
+    </div>
+    }
   </div>
-  } @else {
-  <div class="daily-widget-container">
-    <app-daily-weather-view />
+  <div
+    [@transition]="
+      this.hourViewService.hourlyViewData().hourlyView ? 'start' : 'end'
+    "
+  >
+    @if(!this.hourViewService.hourlyViewData().hourlyView) {
+    <div class="daily-widget-container">
+      <app-daily-weather-view />
+    </div>
+    }
   </div>
-  }
 </div>
 
 }
