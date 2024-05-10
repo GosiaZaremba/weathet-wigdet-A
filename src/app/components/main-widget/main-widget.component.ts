@@ -7,6 +7,13 @@ import { RandomQuoteService } from '../../services/random-quote.service';
 import { DailyWeatherViewComponent } from '../daily-weather-view/daily-weather-view.component';
 import { HourlyWeatherViewComponent } from '../hourly-weather-view/hourly-weather-view.component';
 import { HourViewService } from '../../services/hour-view.service';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-main-widget',
@@ -18,6 +25,18 @@ import { HourViewService } from '../../services/hour-view.service';
   ],
   templateUrl: './main-widget.component.html',
   styleUrl: './main-widget.component.scss',
+  animations: [
+    trigger('transition', [
+      state('start', style({ opacity: '0' })),
+      state(
+        'end',
+        style({
+          opacity: '1',
+        })
+      ),
+      transition('start => end', [animate('1s ease-in-out')]),
+    ]),
+  ],
 })
 export class MainWidgetComponent {
   currentDataService = inject(CurrentWeatherService);
