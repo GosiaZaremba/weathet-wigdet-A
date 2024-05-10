@@ -4,6 +4,8 @@
 :root {
   --main-border-radius: 0.5rem;
   --quote-font: "Overpass", sans-serif;
+
+  --date-font-size: clamp(1.5rem, 0.6479rem + 1.5023vw, 2rem);
 }
 
 * {
@@ -13,4 +15,10 @@
 
 body {
   font-family: "Roboto", sans-serif !important;
+}
+
+.blur {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
 }
