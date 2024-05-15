@@ -1,3 +1,43 @@
 i {
   cursor: pointer;
 }
+
+.hours-container {
+  overflow-x: scroll;
+}
+
+.hours-container::-webkit-scrollbar {
+  display: none;
+}
+
+.hours-container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.btn-right {
+  right: -18px;
+  top: 50%;
+}
+.btn-left {
+  left: -18px;
+  top: 50%;
+  z-index: 1;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+.hour-view:first-of-type {
+  margin-left: 0 !important;
+}
+
+.hour-view:last-of-type {
+  margin-right: 0 !important;
+}
+
+i {
+  color: white;
+}

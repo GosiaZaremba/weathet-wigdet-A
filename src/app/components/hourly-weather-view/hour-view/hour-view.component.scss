@@ -1,24 +1,7 @@
-.hours-container {
-  overflow-x: scroll;
-}
-
-.hours-container::-webkit-scrollbar {
-  display: none;
-}
-
-.hours-container {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
 .day {
-  min-width: 80px;
-  max-width: 80px;
+  min-width: 100px;
+  max-width: 100px;
 }
-
-.btn-right {
-  right: 0;
-}
-.btn-left {
-  left: 0;
+.weather-img-container {
+  height: 5vw;
 }
