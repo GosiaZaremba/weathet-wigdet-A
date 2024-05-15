@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 })
 export class WeatherParamComponent {
   @Input() paramName!: string;
-  @Input() paramVal!: string | number;
+  @Input() paramVal!: string | number | null;
   @Input() paramValMax!: string | number;
   @Input() paramUnit!: string;
 }

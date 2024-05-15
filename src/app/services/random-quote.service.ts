@@ -8,24 +8,22 @@ import { RandomQuoteResponse } from '../models/random-quotes.model';
   providedIn: 'root',
 })
 export class RandomQuoteService {
-  private apiURL =
-    'https://api.api-ninjas.com/v1/quotes?category=inspirational';
-  private apiKey = new HttpHeaders({
-    'X-Api-Key': environment.apiKey,
-  });
+  private apiURL = 'assets/data/quotes.json';
+
   private dailyQuote = signal<RandomQuoteResponse | null>(null);
 
   constructor(private http: HttpClient) {}
 
   fetchData(): Subscription {
     return this.http
-      .get<RandomQuoteResponse[]>(this.apiURL, { headers: this.apiKey })
+      .get<RandomQuoteResponse[]>(this.apiURL)
       .pipe(map((response) => this.processData(response)))
       .subscribe();
   }
 
   processData(data: RandomQuoteResponse[]): void {
-    this.dailyQuote.set(data[0]);
+    const randomIndex = Math.floor(Math.random() * data.length);
+    this.dailyQuote.set(data[randomIndex]);
   }
 
   getRandomQuote() {
