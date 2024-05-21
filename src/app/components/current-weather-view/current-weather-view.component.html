@@ -1,79 +1,99 @@
-<div class="d-flex">
+<div class="current-weather-container blur box-shadow mb-4 p-3">
+  <div class="d-flex justify-content-between">
+    <div class="w-75">
+      <p class="date mb-2">
+        {{
+          this.currentDataService.getCurrentWeatherData()?.time
+            | date : "EEEE, MMMM d, y"
+        }}
+      </p>
+      <div class="row">
+        <div class="col">
+          <app-weather-param
+            [paramName]="'Sunrise'"
+            [paramVal]="
+          this.dailyWeatherService.getDailyWeatherData()?.['0']?.sunrise | date: 'HH:mm'
+        "
+          />
+          <app-weather-param
+            [paramName]="'Sunset'"
+            [paramVal]="
+          this.dailyWeatherService.getDailyWeatherData()?.['0']?.sunset | date: 'HH:mm'
+        "
+          />
+          <app-weather-param
+            [paramName]="'Temperature'"
+            [paramVal]="
+              this.currentDataService.getCurrentWeatherData()?.temperature_2m!
+            "
+            [paramUnit]="
+              this.currentDataService.getCurrentWeatherUnits()?.temperature_2m!
+            "
+          />
+          <app-weather-param
+            [paramName]="'Apparent temperature'"
+            [paramVal]="
+              this.currentDataService.getCurrentWeatherData()
+                ?.apparent_temperature!
+            "
+            [paramUnit]="
+              this.currentDataService.getCurrentWeatherUnits()
+                ?.apparent_temperature!
+            "
+          />
+        </div>
+        <div class="col">
+          <app-weather-param
+            [paramName]="'Precipitation'"
+            [paramVal]="
+              this.currentDataService.getCurrentWeatherData()?.precipitation!
+            "
+            [paramUnit]="
+              this.currentDataService.getCurrentWeatherUnits()?.precipitation!
+            "
+          />
+          <app-weather-param
+            [paramName]="'Pressure'"
+            [paramVal]="
+              this.currentDataService.getCurrentWeatherData()?.surface_pressure!
+            "
+            [paramUnit]="
+              this.currentDataService.getCurrentWeatherUnits()
+                ?.surface_pressure!
+            "
+          />
+          <app-weather-param
+            [paramName]="'Wind speed'"
+            [paramVal]="
+              this.currentDataService.getCurrentWeatherData()?.wind_speed_10m!
+            "
+            [paramUnit]="
+              this.currentDataService.getCurrentWeatherUnits()?.wind_speed_10m!
+            "
+            [paramValMax]="
+              this.currentDataService.getCurrentWeatherData()?.wind_gusts_10m!
+            "
+          />
+          <app-wind-direction-param
+            [paramName]="'Wind direction'"
+            [paramVal]="
+              this.currentDataService.getCurrentWeatherData()
+                ?.wind_direction_10m!
+            "
+          />
+        </div>
+      </div>
+    </div>
+    <div>
+      <app-weather-img
+        [weatherCode]="
+          this.currentDataService.getCurrentWeatherData()?.weather_code!
+        "
+        [isDay]="this.currentDataService.getCurrentWeatherData()?.is_day!"
+      />
+    </div>
+  </div>
   <div>
-    <p>
-      {{
-        this.currentDataService.getCurrentWeatherData()?.time
-          | date : "EEEE, MMMM d, y"
-      }}
-    </p>
     <app-quote />
-  </div>
-  <app-weather-img
-    [weatherCode]="
-      this.currentDataService.getCurrentWeatherData()?.weather_code!
-    "
-    [isDay]="this.currentDataService.getCurrentWeatherData()?.is_day!"
-  />
-</div>
-<div class="row">
-  <div class="col">
-    <app-weather-param
-      [paramName]="'Temperature'"
-      [paramVal]="
-        this.currentDataService.getCurrentWeatherData()?.temperature_2m!
-      "
-      [paramUnit]="
-        this.currentDataService.getCurrentWeatherUnits()?.temperature_2m!
-      "
-    />
-    <app-weather-param
-      [paramName]="'Apparent temperature'"
-      [paramVal]="
-        this.currentDataService.getCurrentWeatherData()?.apparent_temperature!
-      "
-      [paramUnit]="
-        this.currentDataService.getCurrentWeatherUnits()?.apparent_temperature!
-      "
-    />
-  </div>
-  <div class="col">
-    <app-weather-param
-      [paramName]="'Precipitation'"
-      [paramVal]="
-        this.currentDataService.getCurrentWeatherData()?.precipitation!
-      "
-      [paramUnit]="
-        this.currentDataService.getCurrentWeatherUnits()?.precipitation!
-      "
-    />
-    <app-weather-param
-      [paramName]="'Pressure'"
-      [paramVal]="
-        this.currentDataService.getCurrentWeatherData()?.surface_pressure!
-      "
-      [paramUnit]="
-        this.currentDataService.getCurrentWeatherUnits()?.surface_pressure!
-      "
-    />
-  </div>
-  <div class="col">
-    <app-weather-param
-      [paramName]="'Wind speed'"
-      [paramVal]="
-        this.currentDataService.getCurrentWeatherData()?.wind_speed_10m!
-      "
-      [paramUnit]="
-        this.currentDataService.getCurrentWeatherUnits()?.wind_speed_10m!
-      "
-      [paramValMax]="
-        this.currentDataService.getCurrentWeatherData()?.wind_gusts_10m!
-      "
-    />
-    <app-wind-direction-param
-      [paramName]="'Wind direction'"
-      [paramVal]="
-        this.currentDataService.getCurrentWeatherData()?.wind_direction_10m!
-      "
-    />
   </div>
 </div>

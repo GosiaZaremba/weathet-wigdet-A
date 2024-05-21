@@ -5,6 +5,7 @@ import { QuoteComponent } from './quote/quote.component';
 import { WeatherParamComponent } from './weather-param/weather-param.component';
 import { WindDirectionParamComponent } from './wind-direction-param/wind-direction-param.component';
 import { WeatherImgComponent } from '../shared/weather-img/weather-img.component';
+import { DailyWeatherService } from '../../services/daily-weather.service';
 
 @Component({
   selector: 'app-current-weather-view',
@@ -21,6 +22,7 @@ import { WeatherImgComponent } from '../shared/weather-img/weather-img.component
 })
 export class CurrentWeatherViewComponent {
   currentDataService = inject(CurrentWeatherService);
+  dailyWeatherService = inject(DailyWeatherService);
 
   latitude = '54.21';
   longitude = '18.38';

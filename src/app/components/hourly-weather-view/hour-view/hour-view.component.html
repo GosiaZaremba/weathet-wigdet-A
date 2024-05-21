@@ -1,46 +1,39 @@
-<div #hoursContainer class="d-flex w-full hours-container position-relative">
-  <button class="position-sticky btn-left" (click)="this.onClickLeft()">
-    Left
-  </button>
-  @for(hour of hourData; track hour.time) {
-  <div class="border day">
-    <p>{{ hour.time | date : "H:mm" }}</p>
+<div class="day blur p-2">
+  <p class="text-center">{{ hour.time | date : "H:mm" }}</p>
+  <div class="weather-img-container w-100">
     <app-weather-img [weatherCode]="hour.weather_code" [isDay]="hour.is_day" />
-    <app-weather-params-icons
-      [icon]="'bi-thermometer-half'"
-      [paramVal]="hour.temperature_2m"
-      [paramUnit]="
-        this.hourlyWeatherService.getHourlyWeatherUnits()?.temperature_2m!
-      "
-    />
-    <app-weather-params-icons
-      [icon]="'bi-emoji-sunglasses'"
-      [paramVal]="hour.uv_index"
-    />
-    <app-weather-params-icons
-      [icon]="'bi-cloud-rain'"
-      [paramVal]="hour.precipitation"
-      [paramUnit]="
-        this.hourlyWeatherService.getHourlyWeatherUnits()?.precipitation!
-      "
-      [additionalVal]="hour.precipitation_probability"
-      [additionalUnit]="
-        this.hourlyWeatherService.getHourlyWeatherUnits()
-          ?.precipitation_probability!
-      "
-    />
-    <app-weather-params-icons
-      [icon]="'bi-wind'"
-      [paramVal]="hour.wind_speed_10m"
-      [paramUnit]="
-        hourlyWeatherService.getHourlyWeatherUnits()?.wind_speed_10m!
-      "
-      [iconValue]="hour.wind_direction_10m"
-    />
   </div>
-  }
-
-  <button class="position-sticky btn-right" (click)="this.onClickRight()">
-    Right
-  </button>
+  <app-weather-params-icons
+    class="font-s"
+    [icon]="'bi-thermometer-half'"
+    [paramVal]="hour.temperature_2m"
+    [paramUnit]="
+      this.hourlyWeatherService.getHourlyWeatherUnits()?.temperature_2m!
+    "
+  />
+  <app-weather-params-icons
+    class="font-s"
+    [icon]="'bi-emoji-sunglasses'"
+    [paramVal]="hour.uv_index"
+  />
+  <app-weather-params-icons
+    class="font-s"
+    [icon]="'bi-cloud-rain'"
+    [paramVal]="hour.precipitation"
+    [paramUnit]="
+      this.hourlyWeatherService.getHourlyWeatherUnits()?.precipitation!
+    "
+    [additionalVal]="hour.precipitation_probability"
+    [additionalUnit]="
+      this.hourlyWeatherService.getHourlyWeatherUnits()
+        ?.precipitation_probability!
+    "
+  />
+  <app-weather-params-icons
+    class="font-s"
+    [icon]="'bi-wind'"
+    [paramVal]="hour.wind_speed_10m"
+    [paramUnit]="hourlyWeatherService.getHourlyWeatherUnits()?.wind_speed_10m!"
+    [iconValue]="hour.wind_direction_10m"
+  />
 </div>

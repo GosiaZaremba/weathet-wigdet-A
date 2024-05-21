@@ -1,6 +1,20 @@
 <div>
-  <app-hour-view
-    [hourData]="this.hourlyWeatherService.getHourlyWeatherData()?.[hourViewService.hourlyViewData().dayIndex!]!"
-  />
-  <i class="bi bi-arrow-return-left" (click)="onReturn()"></i>
+  <div class="position-relative d-flex">
+    <button class="position-absolute btn-left" (click)="this.onClickLeft()">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+    <div #hoursContainer class="hours-container d-flex w-full">
+      @for(hour of
+      this.hourlyWeatherService.getHourlyWeatherData()?.[hourViewService.hourlyViewData().dayIndex!]!;
+      track hour.time){
+      <app-hour-view [hour]="hour" class="hour-view mx-2" />
+      }
+    </div>
+    <button class="position-absolute btn-right" (click)="this.onClickRight()">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+  <div class="mt-2">
+    <i class="bi bi-arrow-return-left" (click)="onReturn()"></i>
+  </div>
 </div>

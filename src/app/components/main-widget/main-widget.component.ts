@@ -1,4 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { CurrentWeatherService } from '../../services/current-weather.service';
 import { DailyWeatherService } from '../../services/daily-weather.service';
 import { HourlyWeatherService } from '../../services/hourly-weather.service';
@@ -19,6 +20,7 @@ import {
   selector: 'app-main-widget',
   standalone: true,
   imports: [
+    CommonModule,
     CurrentWeatherViewComponent,
     DailyWeatherViewComponent,
     HourlyWeatherViewComponent,
@@ -44,6 +46,7 @@ export class MainWidgetComponent {
   hourlyDataService = inject(HourlyWeatherService);
   randomQuoteService = inject(RandomQuoteService);
   hourViewService = inject(HourViewService);
+  showDetails = signal<boolean>(false);
 
   // Gdansk, Poland
   latitude = '54.3523';
@@ -63,5 +66,10 @@ export class MainWidgetComponent {
     this.dailyDataService.fetchData(this.latitude, this.longitude, this.days);
     this.hourlyDataService.fetchData(this.latitude, this.longitude, this.days);
     this.randomQuoteService.fetchData();
+  }
+
+  setShowDetails(showDetails: boolean) {
+    this.showDetails.set(showDetails);
+    console.log(this.showDetails());
   }
 }

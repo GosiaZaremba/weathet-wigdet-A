@@ -5,3 +5,16 @@ i.bi-arrow-down-short::before {
 i.bi-arrow-down-short.down::before {
   transform: rotate(180deg);
 }
+
+i {
+  color: white;
+}
+
+i:hover {
+  cursor: pointer;
+}
+
+i.bi-arrow-down-short {
+  right: -22px;
+  font-size: 20px;
+}

@@ -1,6 +1,6 @@
 @if(this.randomQuoteService.getRandomQuote() &&
 this.currentDataService.getCurrentWeatherData()) {
-<div class="mx-auto mt-3 main-widget-container">
+<div class="mx-auto mt-3 main-widget-container px-4 py-3">
   <div class="current-widget-container">
     <app-current-weather-view />
   </div>
@@ -22,7 +22,10 @@ this.currentDataService.getCurrentWeatherData()) {
   >
     @if(!this.hourViewService.hourlyViewData().hourlyView) {
     <div class="daily-widget-container">
-      <app-daily-weather-view />
+      <app-daily-weather-view
+        (showDetailsEmitter)="setShowDetails($event)"
+        [showDetails]="showDetails"
+      />
     </div>
     }
   </div>

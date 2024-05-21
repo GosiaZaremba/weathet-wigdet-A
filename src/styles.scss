@@ -1,9 +1,13 @@
 @import "bootstrap-icons/font/bootstrap-icons.css";
 @import url("https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Salsa&display=swap");
 :root {
   --main-border-radius: 0.5rem;
-  --quote-font: "Overpass", sans-serif;
+  --quote-font: "Salsa", sans-serif;
+
+  --date-font-size: clamp(1.5rem, 0.6479rem + 1.5023vw, 2rem);
+  --main-font-size: clamp(0.75rem, 0.6538rem + 0.3846vi, 1rem);
+  --small-font-size: clamp(0.6rem, 0.7019rem + 0.1923vi, 0.7rem);
 }
 
 * {
@@ -13,4 +17,19 @@
 
 body {
   font-family: "Roboto", sans-serif !important;
+  font-size: var(--main-font-size) !important;
+}
+
+.blur {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  border-radius: var(--main-border-radius);
+}
+
+.box-shadow {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.font-s {
+  font-size: var(--small-font-size);
 }

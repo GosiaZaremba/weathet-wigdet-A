@@ -1,44 +1,51 @@
 <div
   [@openClose]="showDetails ? 'open' : 'closed'"
-  class="border border-primary open-close"
+  class="blur overflow-hidden"
 >
-  <div [className]="'d-flex flex-column'">
-    <div>
+  <div [className]="'d-flex flex-column text-center'">
+    <div class="mb-2">
       <div>
-        <p>{{ dayData.time | date : "MMMM d" }}</p>
         <p>{{ dayData.time | date : "EEEE" }}</p>
       </div>
-      <div class="w-50">
+      <div class="weather-img-container w-100">
         <app-weather-img
           [weatherCode]="dayData.weather_code"
           (click)="onClickWeatherIcon(this.index)"
         />
       </div>
     </div>
-    <div>
+    <div
+      class="d-flex flex-column align-items-baseline justify-content-between"
+    >
       <app-weather-params-icons
+        class="font-s d-flex"
         [icon]="'bi-thermometer-low'"
         [paramVal]="dayData.temperature_2m_min"
         [paramUnit]="dayUnits.temperature_2m_min"
       />
       <app-weather-params-icons
+        class="font-s"
         [icon]="'bi-thermometer-high'"
         [paramVal]="dayData.temperature_2m_max"
         [paramUnit]="dayUnits.temperature_2m_max"
       />
       <app-weather-params-icons
+        class="font-s"
         [icon]="'bi-sunrise'"
         [paramVal]="dayData.sunrise | date : 'H:mm'"
       />
       <app-weather-params-icons
+        class="font-s"
         [icon]="'bi-sunset'"
         [paramVal]="dayData.sunset | date : 'H:mm'"
       />
       <app-weather-params-icons
+        class="font-s"
         [icon]="'bi-emoji-sunglasses'"
         [paramVal]="dayData.uv_index_max"
       />
       <app-weather-params-icons
+        class="font-s"
         [icon]="'bi-cloud-rain'"
         [paramVal]="dayData.precipitation_sum"
         [paramUnit]="dayUnits.precipitation_sum"
@@ -46,6 +53,7 @@
         [additionalUnit]="dayUnits.precipitation_probability_max"
       />
       <app-weather-params-icons
+        class="font-s"
         [icon]="'bi-wind'"
         [paramVal]="dayData.wind_speed_10m_max"
         [paramUnit]="dayUnits.wind_speed_10m_max"

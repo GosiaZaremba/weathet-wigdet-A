@@ -5,7 +5,7 @@ import { Injectable, computed, signal } from '@angular/core';
 })
 export class HourViewService {
   private hourlyView = signal<boolean>(false);
-  private dayIndex = signal<number>(0);
+  private dayIndex = signal<number>(1);
 
   setHourlyView(value: boolean) {
     this.hourlyView.set(value);

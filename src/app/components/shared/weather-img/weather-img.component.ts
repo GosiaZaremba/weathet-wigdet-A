@@ -44,6 +44,7 @@ const weatherNightIcons = {
   imports: [],
   templateUrl: './weather-img.component.html',
   styleUrl: './weather-img.component.scss',
+  host: { class: 'd-flex h-100 justify-content-center' },
 })
 export class WeatherImgComponent {
   @Input() weatherCode!: number;

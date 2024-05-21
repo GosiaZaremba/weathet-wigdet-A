@@ -23,11 +23,11 @@ import { HourViewService } from '../../../services/hour-view.service';
   styleUrl: './day-weather-view.component.scss',
   animations: [
     trigger('openClose', [
-      state('open', style({ height: '*' })),
+      state('open', style({ height: '100%' })),
       state(
         'closed',
         style({
-          height: '100px',
+          height: '10vw',
         })
       ),
       transition('open => closed', [animate('0.5s ease-in-out')]),
@@ -45,7 +45,5 @@ export class DayWeatherViewComponent {
   onClickWeatherIcon(index: number) {
     this.hourViewService.setDayIndex(index);
     this.hourViewService.setHourlyView(true);
-
-    console.log(this.hourViewService.hourlyViewData());
   }
 }
