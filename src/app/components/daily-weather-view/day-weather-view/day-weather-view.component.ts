@@ -45,7 +45,5 @@ export class DayWeatherViewComponent {
   onClickWeatherIcon(index: number) {
     this.hourViewService.setDayIndex(index);
     this.hourViewService.setHourlyView(true);
-
-    console.log(this.hourViewService.hourlyViewData());
   }
 }

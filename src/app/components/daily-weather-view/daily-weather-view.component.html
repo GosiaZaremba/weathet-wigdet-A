@@ -1,14 +1,17 @@
-<div class="d-flex py-3">
+<div class="d-flex justify-content-between py-3 position-relative">
   @for(day of this.dailyWeatherService.getDailyWeatherData()!; track $index ) {
   @if($index !== 0){
-  <app-day-weather-view
-    [dayData]="day"
-    [dayUnits]="this.dailyWeatherService.getDailyWeatherUnits()!"
-    [showDetails]="this.showDetails()"
-    [index]="$index"
-  />} }
+  <div class="">
+    <app-day-weather-view
+      [dayData]="day"
+      [dayUnits]="this.dailyWeatherService.getDailyWeatherUnits()!"
+      [showDetails]="this.showDetails()"
+      [index]="$index"
+    />
+  </div>
+  } }
   <i
-    class="bi bi-arrow-down-short"
+    class="bi bi-arrow-down-short position-absolute"
     [ngClass]="this.showDetails() ? 'down' : ''"
     (click)="setShowDetails()"
   ></i>

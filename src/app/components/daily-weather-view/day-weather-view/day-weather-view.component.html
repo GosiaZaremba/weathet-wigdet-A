@@ -1,9 +1,9 @@
 <div
   [@openClose]="showDetails ? 'open' : 'closed'"
-  class="blur overflow-hidden mx-2 p-2"
+  class="blur overflow-hidden"
 >
   <div [className]="'d-flex flex-column text-center'">
-    <div>
+    <div class="mb-2">
       <div>
         <p>{{ dayData.time | date : "EEEE" }}</p>
       </div>

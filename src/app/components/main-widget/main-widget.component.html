@@ -22,7 +22,10 @@ this.currentDataService.getCurrentWeatherData()) {
   >
     @if(!this.hourViewService.hourlyViewData().hourlyView) {
     <div class="daily-widget-container">
-      <app-daily-weather-view />
+      <app-daily-weather-view
+        (showDetailsEmitter)="setShowDetails($event)"
+        [showDetails]="showDetails"
+      />
     </div>
     }
   </div>
