@@ -1,0 +1,25 @@
+<form action="" [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
+  <app-dropdown
+    [values]="tempUnits"
+    [selectedValue]="'2'"
+    formControlName="temperatureUnit"
+  />
+  <app-dropdown
+    [values]="windSpeedUnits"
+    [selectedValue]="'2'"
+    formControlName="windSpeedUnit"
+  />
+  <app-dropdown
+    [values]="precipitationUnits"
+    [selectedValue]="'2'"
+    formControlName="precipitationUnit"
+  />
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Coordinates"
+    aria-label="Coordinates"
+    formControlName="coordinates"
+  />
+  <button type="submit">Submit</button>
+</form>

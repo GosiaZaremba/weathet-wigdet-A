@@ -48,23 +48,14 @@ export class MainWidgetComponent {
   hourViewService = inject(HourViewService);
   showDetails = signal<boolean>(false);
 
-  // Gdansk, Poland
-  latitude = '54.3523';
-  longitude = '18.6491';
-  days = '7';
-
-  // Sydney, Australia
-  // latitude = '-33.8678';
-  // longitude = '151.2073';
-
   ngOnInit() {
     this.onInit();
   }
 
   onInit() {
-    this.currentDataService.fetchData(this.latitude, this.longitude);
-    this.dailyDataService.fetchData(this.latitude, this.longitude, this.days);
-    this.hourlyDataService.fetchData(this.latitude, this.longitude, this.days);
+    this.currentDataService.fetchData();
+    this.dailyDataService.fetchData();
+    this.hourlyDataService.fetchData();
     this.randomQuoteService.fetchData();
   }
 

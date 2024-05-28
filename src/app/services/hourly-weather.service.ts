@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject } from '@angular/core';
 import { BehaviorSubject, Subscription, map } from 'rxjs';
 import {
   HourlyWeatherData,
@@ -7,11 +7,14 @@ import {
   HourlyWeatherUnits,
 } from '../models/hourly-weather.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { SettingsService } from './settings.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HourlyWeatherService {
+  settingsService = inject(SettingsService);
+
   private hourlyData$ = new BehaviorSubject<unknown>(null);
   private hourlyData = signal<HourlyWeatherResponse | null>(null);
   private hourlyWeatherData = signal<HourlyWeatherData[][] | null>(null);
@@ -21,10 +24,10 @@ export class HourlyWeatherService {
 
   constructor(private http: HttpClient) {}
 
-  fetchData(latitude: string, longitude: string, days: string): Subscription {
+  fetchData(): Subscription {
     let params = new HttpParams()
-      .set('latitude', latitude)
-      .set('longitude', longitude)
+      .set('latitude', this.settingsService.getSettings().latitude)
+      .set('longitude', this.settingsService.getSettings().longitude)
       .set(
         'hourly',
         [
@@ -40,7 +43,16 @@ export class HourlyWeatherService {
         ].join(',')
       )
       .set('timezone', 'auto')
-      .set('forecast_days', days);
+      .set('forecast_days', this.settingsService.getSettings().days)
+      .set(
+        'temperature_unit',
+        this.settingsService.getSettings().temperatureUnit
+      )
+      .set('wind_speed_unit', this.settingsService.getSettings().windspeedUnit)
+      .set(
+        'precipitation_unit',
+        this.settingsService.getSettings().precipitationUnit
+      );
     return this.http
       .get<any>(this.apiUrl, { params: params })
       .pipe(map((response) => this.processData(response)))

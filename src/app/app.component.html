@@ -1,1 +1,6 @@
-<app-main-widget></app-main-widget>
+@if(settingsViewService.getSettingsView()){
+<app-settings />
+} @else {
+<app-main-widget />
+
+}

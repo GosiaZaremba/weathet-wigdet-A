@@ -1,0 +1,15 @@
+<select
+  class="form-select"
+  [(ngModel)]="selectedValue"
+  (change)="onClickOption($event)"
+>
+  @for(value of this.values ; track value) {
+  <option
+    [selected]="selectedValue == value.value ? true : false"
+    class="dropdown-item"
+    [value]="value.value"
+  >
+    {{ value.name }}
+  </option>
+  }
+</select>
